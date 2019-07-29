@@ -32,4 +32,7 @@ git pull https://github.com/lcc908/myfirstvue.git //从git上下载项目
 https://github.com/lcc908/myfirstvue.git
 
 
-如果项目是从git上关联过 只需要  git add .    git commit  git push
+如果项目是从git上关联过 只需要  
+1： git add .     
+2： git commit -m "first commit"    
+3： git push
