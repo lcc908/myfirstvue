@@ -24,9 +24,12 @@ echo "# myfirstvue" >> README.md
 git init  //在本地项目下初始化git
 git add name 或者 git add .//提交到历史区    //git add .提交提交全部文件到历史区
 git status  //查看状态 查看需要提交的文件
-git commit -m "first commit" //提交暂存区
+git commit -m "first commit" //提交暂存区 引号里面是注释说明
 git remote add origin https://github.com/lcc908/myfirstvue.git //链接远程到远程仓库
 git push -u origin master //push到主分支
 
 git pull https://github.com/lcc908/myfirstvue.git //从git上下载项目
 https://github.com/lcc908/myfirstvue.git
+
+
+如果项目是从git上关联过 只需要  git add .    git commit  git push
