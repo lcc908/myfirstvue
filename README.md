@@ -22,7 +22,8 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 echo "# myfirstvue" >> README.md
 git init  //在本地项目下初始化git
-git add name //提交到历史区
+git add name 或者 git add .//提交到历史区    //git add .提交提交全部文件到历史区
+git status  //查看状态 查看需要提交的文件
 git commit -m "first commit" //提交暂存区
 git remote add origin https://github.com/lcc908/myfirstvue.git //链接远程到远程仓库
 git push -u origin master //push到主分支
