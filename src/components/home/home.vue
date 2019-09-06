@@ -8,7 +8,7 @@
               </div>
             </el-col>
             <el-col :span="12" class="exit">
-              <a href="">退出</a>
+              <a href="#" @click.prevent="handletuichu">退出</a>
             </el-col>
           </el-row>
         </el-header>
@@ -80,6 +80,13 @@
 <script>
     export default {
         name: "home",
+        methods:{
+            handletuichu:function () {
+                localStorage.removeItem('token');
+                this.$message.success('退出成功');
+                this.$router.push('/login')
+            }
+        },
         beforeCreate() {
           const token = localStorage.getItem('token')
             if(!token){
