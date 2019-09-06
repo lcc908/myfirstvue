@@ -13,7 +13,7 @@
           </el-row>
         </el-header>
         <el-container>
-          <el-aside width="200px" class="aside">
+          <el-aside width="201px" class="aside">
 
             <el-menu
               background-color="#393D49"
@@ -79,11 +79,20 @@
 
 <script>
     export default {
-        name: "home"
+        name: "home",
+        beforeCreate() {
+          const token = localStorage.getItem('token')
+            if(!token){
+                this.$router.push({name:'login'})
+            }
+        }
     }
 </script>
 
 <style scoped>
+  .el-menu {
+    border-right: 0;
+  }
   .container {
     height: 100%;
   }
