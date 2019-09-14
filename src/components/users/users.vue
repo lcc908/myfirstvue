@@ -87,6 +87,7 @@
             <el-button size="mini"
                        plain type="success"
                        icon="el-icon-check"
+                       @click="fenpeisuer(scope.row)"
                        circle></el-button>
         </template>
       </el-table-column>
@@ -139,6 +140,35 @@
         <el-button type="primary" @click="editadduser()">确 定</el-button>
       </div>
     </el-dialog>
+  <!--修改用户角色-->
+    <el-dialog title="分配校色" :visible.sync="roollll">
+      <el-form :model="form">
+        <el-form-item label="用户名" label-width="100px">
+          {{'用户名'}}
+        </el-form-item>
+        <el-form-item label="角色" label-width="100px">
+          <!--
+          如果select绑定的数据的值 如果 和option的value一样
+           就会显示该option的label值,
+           -->
+          {{currrole}}
+          <el-select v-model="currrole">
+            <el-option label="请选择" :value="-1"></el-option>
+            <el-option
+              v-for="(item,i) in role"
+              :value="item.id"
+              :label="item.name"
+              :key="i"
+            ></el-option>
+          </el-select>
+
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="roollll = false">取 消</el-button>
+        <el-button type="primary" @click="setRole">确 定</el-button>
+      </div>
+    </el-dialog>
   </el-card>
 </template>
 
@@ -154,13 +184,13 @@
                     name: '王小虎',
                     address: '上海市普陀区金沙江路 1518 弄',
                     value1:true,
-                    id:455
+                    id:1
                 }, {
                     creattime: '2018-8-2',
                     name: '王小虎',
                     address: '上海市普陀区金沙江路 1517 弄',
                     value1:false,
-                    id:5555
+                    id:2
                 }],
                 //分页相关的数据
                 total:50,
@@ -174,9 +204,13 @@
                     emile:'',
                     tel:''
                 },
+                role:[{name:'管理员',id:1},{name:'管理员2',id:2},{name:'管理员3',id:3}],
                 dialogFormVisible:false,
                 edit:false,
+                roollll:false,
+                currrole:'',// 用户id
                 // curruserid:-1
+
             }
         },
         created(){
@@ -274,6 +308,16 @@
             // 修改用户状态发送请求
             changeMgState:function (user) {
                 console.log(user.value1);
+            },
+            // 分配角色 打开对话框
+            fenpeisuer(user){
+                console.log(user);
+                this.roollll = true
+                this.currrole = user.id  //打开对话框给roleID复制
+            },
+            //分配角色，发送请求
+            setRole(){
+
             }
 
         }
